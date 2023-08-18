@@ -9,18 +9,20 @@ namespace FunctionApp2
     {
         [FunctionName("RetrieveAppSetting")]
         public static void Run(
-            [TimerTrigger("0 */2 * * * *")] TimerInfo myTimer,
+            [TimerTrigger("0 * * * * *")] TimerInfo myTimer,
             ILogger log)
         {
             // Retrieve the app setting value using GetEnvironmentVariable
-            string appSettingValue1 = Environment.GetEnvironmentVariable("YourAppSettingKey1");
-            string appSettingValue2 = Environment.GetEnvironmentVariable("Group1:YourAppSettingKey2");
-            string appSettingValue3 = Environment.GetEnvironmentVariable("ConnectionStrings:YourAppSettingKey3");
+            string appSetting1 = Environment.GetEnvironmentVariable("AppSetting1");
+            string appSetting2 = Environment.GetEnvironmentVariable("Group1:AppSetting2");
+            string appSetting3 = Environment.GetEnvironmentVariable("Group1:AppSetting3");
+            string appSetting4 = Environment.GetEnvironmentVariable("ConnectionStrings:AppSetting4");
 
             // Print the app setting value
-            log.LogInformation($"App Setting Value: {appSettingValue1}");
-            log.LogInformation($"App Setting Value Group1:YourAppSettingKey: {appSettingValue2}");
-            log.LogInformation($"App Setting Value ConnectionStrings:YourAppSettingKey: {appSettingValue3}");
+            log.LogInformation($"App Setting Value AppSetting1: {appSetting1}");
+            log.LogInformation($"App Setting Value Group1:AppSetting2: {appSetting2}");
+            log.LogInformation($"App Setting Value Group1:AppSetting3: {appSetting3}");
+            log.LogInformation($"App Setting Value ConnectionStrings:AppSetting4: {appSetting4}");
         }
     }
 }
